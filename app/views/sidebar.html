@@ -1,0 +1,59 @@
+<!-- Sidebar -->
+  <section id="sidebar">
+    <!-- Intro -->
+      <section id="intro">
+        <a href="#" class="logo"><img src="images/logo.jpg" alt="" /></a>
+        <header>
+          <h2>VishalBasnet23</h2>
+          <p>Another fine responsive site template in HTML5</a></p>
+        </header>
+      </section>
+    <!-- Mini Posts -->
+      <section>
+        <div class="mini-posts">
+          <!-- Mini Post -->
+            <article class="mini-post" ng-repeat="FeaturedPost in FeaturedPosts">
+              <header>
+                <h3><a href="#/posts/{{FeaturedPost.slug}}">{{FeaturedPost.title.rendered}}</a></h3>
+                <time class="published" datetime="{{FeaturedPost.date}}">{{FeaturedPost.date | date:'MMMM dd, yyyy'}}</time>
+                <a href="#" class="author"><img ng-src="{{FeaturedPost.avatar_url}}" alt="" /></a>
+              </header>
+              <a href="#/posts/{{FeaturedPost.slug}}" class="image" ng-show="FeaturedPost.featured_media !== null"><img ng-src="{{FeaturedPost.featured_image_thumbnail_url.medium}}" alt="" /></a>
+            </article>
+        </div>
+      </section>
+    <!-- Posts List -->
+      <section>
+        <ul class="posts">
+          <li ng-repeat="MostViewedPost in MostViewedPosts">
+            <article>
+              <header>
+                <h3><a href="#/posts/{{MostViewedPost.slug}}">{{MostViewedPost.title.rendered}}</a></h3>
+                <time class="published" datetime="{{MostViewedPost.date}}">{{MostViewedPost.date | date:'MMMM dd, yyyy'}}</time>
+              </header>
+              <a href="#" class="image" ng-show="MostViewedPost.featured_media !== null"><img ng-src="{{MostViewedPost.featured_image_thumbnail_url.thumbnail}}" alt="" /></a>
+            </article>
+          </li>
+        </ul>
+      </section>
+    <!-- About -->
+      <section class="blurb">
+        <h2>About</h2>
+        <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod amet placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at phasellus sed ultricies.</p>
+        <ul class="actions">
+          <li><a href="#" class="button">Learn More</a></li>
+        </ul>
+      </section>
+    <!-- Footer -->
+      <section id="footer">
+        <ul class="icons">
+          <li><a href="https://twitter.com/{{customizerFields.header_twitter_link}}" class="fa-twitter"><span class="label">Twitter</span></a></li>
+          <li><a href="http://facebook.com/{{customizerFields.header_facebook_link}}" class="fa-facebook"><span class="label">Facebook</span></a></li>
+          <li><a href="https://www.instagram.com/{{customizerFields.header_instagram_link}}" class="fa-instagram"><span class="label">Instagram</span></a></li>
+          <!-- <li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li> -->
+          <li><a href="mailto:{{customizerFields.header_email_address}}?subject=Enquiry about the blog" class="fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+        <p class="copyright" ng-bind-html="customizerFields.footer_copy_right"><a href="http://designscrazed.org/">HTML5</a>.</p>
+      </section>
+
+  </section>

@@ -1,0 +1,29 @@
+<!-- Main -->
+	<div id="main">
+		<!-- Post -->
+			<article class="post">
+				<header>
+					<div class="title">
+						<h2>{{post.title.rendered}}</h2>
+						<p ng-show="post.post_metas.tagline">{{post.post_metas.tagline}}</p>
+					</div>
+					<div class="meta">
+						<time class="published" datetime="{{post.date}}">{{post.date | date:'MMMM dd, yyyy'}}</time>
+						<a href="#" class="author"><span class="name">{{post.author_name}}</span><img ng-src="{{post.avatar_url}}" alt="" /></a>
+					</div>
+				</header>
+				<a href="javascript:void(0);" class="image featured" ng-show="post.featured_media !== 0">
+					<img ng-src="{{post.featured_image_thumbnail_url.full}}">
+				</a>
+				<p ng-bind-html="post.content.rendered"></p>
+				<footer>
+					<ul class="stats">
+						<!-- {{post.categories}} -->
+						<li ng-repeat="postCategory in post.categories_details"><a href="posts/cat/{{postCategory.slug}}">{{postCategory.name}}</a></li>
+						<li><a href="#" class="icon fa-heart">28</a></li>
+						<li><a href="#" class="icon fa-comment">128</a></li>
+					</ul>
+				</footer>
+			</article>
+	</div>
+	<div ng-include src="'views/sidebar.html'"></div>
