@@ -15,7 +15,6 @@ angular.module('blogApp')
     function handleSuccess(response) {
       return response.data;
     }
-
     function handleError(response) {
       if(!angular.isObject(response.data) || !response.data.message) {
         return($q.reject("Error"));
@@ -31,8 +30,8 @@ angular.module('blogApp')
       return($http.get(mainUrl+'/posts?filter[name]='+postSlug)
       .then(handleSuccess, handleError));
     }
-    function getPostsByCat(catSlug, limit) {
-      return($http.get(mainUrl+'/posts?filter[category_name]='+catSlug+'&per_page='+limit)
+    function getPostsByCat(catSlug, limit, offset) {
+      return($http.get(mainUrl+'/posts?filter[category_name]='+catSlug+'&per_page='+limit+'&offset='+offset)
       .then(handleSuccess,handleError));
     }
     function getCustomizerFields() {

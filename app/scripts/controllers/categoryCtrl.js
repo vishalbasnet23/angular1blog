@@ -2,31 +2,32 @@
 
 /**
  * @ngdoc function
- * @name blogApp.controller:MainCtrl
+ * @name blogApp.controller:categoryCtrl
  * @description
- * # MainCtrl
+ * # categoryCtrl
  * Controller of the blogApp
  */
 angular.module('blogApp')
-  .controller('MainCtrl', function ( $scope, wpFactory) {
+  .controller('categoryCtrl', function ( $scope, wpFactory, $routeParams, $http) {
     $scope.posts = [];
     $scope.offSet = 0;
     $scope.postEnd = false;
     $scope.customizerFields;
     $scope.FeaturedPosts;
     $scope.MostViewedPosts;
+    $scope.CatSlug = $routeParams.slug;
     $scope.allPosts = function() {
-      wpFactory.getPosts(5,$scope.offSet).then(function(success){
+      wpFactory.getPostsByCat($scope.CatSlug, 5, $scope.offSet).then(function(success){
         $scope.posts = success;
         $scope.offSet+=5;
-        document.querySelector('title').innerHTML = 'Home | VB23';
+        document.querySelector('title').innerHTML = 'Home | '+$scope.CatSlug;
       },function error(err){
         console.log(err);
       })
     }
     $scope.allPosts();
     $scope.loadMore = function(offset) {
-      wpFactory.getPosts(5,offset).then(function(success){
+      wpFactory.getPostsByCat($scope.CatSlug, 5, offset).then(function(success){
         angular.forEach(success, function(value, key) {
           $scope.posts.push(value);
         });
@@ -47,7 +48,7 @@ angular.module('blogApp')
     };
     $scope.getCustomizerFields();
     $scope.getFeaturedPosts = function() {
-      wpFactory.getPostsByCat('featured', 3, 0).then(function(success){
+      wpFactory.getPostsByCat('featured', 3).then(function(success){
         $scope.FeaturedPosts = success;
       }, function error(err) {
         console.log(err);
@@ -55,11 +56,12 @@ angular.module('blogApp')
     };
     $scope.getFeaturedPosts();
     $scope.getMostViewedPosts = function() {
-      wpFactory.getPostsByCat('most-viewed', 5, 0).then(function(success){
+      wpFactory.getPostsByCat('most-viewed', 5).then(function(success){
         $scope.MostViewedPosts = success;
       }, function error(err) {
         console.log(err);
       });
     };
     $scope.getMostViewedPosts();
+
   });

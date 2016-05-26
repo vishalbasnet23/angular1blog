@@ -29,6 +29,11 @@ angular
         controller: 'SingleCtrl',
         controllerAs: 'singlePost'
       })
+      .when('/posts/cat/:slug', {
+        templateUrl: 'views/main.html',
+        controller: 'categoryCtrl',
+        controllerAs: 'categoryPosts'
+      })
       .otherwise({
         redirectTo: '/'
       });

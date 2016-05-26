@@ -56,11 +56,11 @@ add_action( 'rest_api_init', 'vb_23_rest_api_customizer_fields');
 function vb_23_rest_api_customizer_fields() {
 	register_rest_route( 'customizer/v1', '/customizer-fields/', array(
 		'methods' => 'GET',
-		'callback' => 'get_beyond_the_bell_customizer_fields',
+		'callback' => 'get_vb_23_customizer_fields',
 	) );
 }
 
-function get_beyond_the_bell_customizer_fields() {
+function get_vb_23_customizer_fields() {
 	$current_active_theme = wp_get_theme();
 	$current_active_theme_name = $current_active_theme->get('Name');
 	$theme_mod = get_option( 'theme_mods_'.$current_active_theme_name.'theme' );
@@ -145,6 +145,16 @@ function vb_23_customize_register( $wp_customize ) {
 		'label' => __( 'Footer Copy Right Text', 'vb_23' ),
 		'section' => 'footer_section',
 		'settings' => 'footer_copy_right'
+	));
+	$wp_customize->add_setting('footer_about_me', array(
+		'default' => 'All About Me',
+		'transport' => 'postMessage',
+	) );
+	$wp_customize->add_control('footer_about_me', array(
+		'label' => __( 'Footer Copy Right Text', 'vb_23' ),
+		'type' => 'textarea',
+		'section' => 'footer_section',
+		'settings' => 'footer_about_me'
 	));
 }
 add_action( 'customize_register', 'vb_23_customize_register' );

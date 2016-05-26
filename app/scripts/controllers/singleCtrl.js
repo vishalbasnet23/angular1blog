@@ -32,7 +32,7 @@ angular.module('blogApp')
     };
     $scope.getCustomizerFields();
     $scope.getFeaturedPosts = function() {
-      wpFactory.getPostsByCat('featured', 3).then(function(success){
+      wpFactory.getPostsByCat('featured', 3, 0).then(function(success){
         $scope.FeaturedPosts = success;
       }, function error(err) {
         console.log(err);
@@ -40,7 +40,7 @@ angular.module('blogApp')
     };
     $scope.getFeaturedPosts();
     $scope.getMostViewedPosts = function() {
-      wpFactory.getPostsByCat('most-viewed', 5).then(function(success){
+      wpFactory.getPostsByCat('most-viewed', 5, 0).then(function(success){
         $scope.MostViewedPosts = success;
       }, function error(err) {
         console.log(err);

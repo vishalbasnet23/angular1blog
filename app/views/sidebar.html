@@ -2,7 +2,7 @@
   <section id="sidebar">
     <!-- Intro -->
       <section id="intro">
-        <a href="#" class="logo"><img src="images/logo.jpg" alt="" /></a>
+        <a href="#" class="logo" ng-show="customizerFields.site_logo"><img ng-src="{{customizerFields.site_logo}}" alt="" /></a>
         <header>
           <h2>VishalBasnet23</h2>
           <p>Another fine responsive site template in HTML5</a></p>
@@ -39,7 +39,7 @@
     <!-- About -->
       <section class="blurb">
         <h2>About</h2>
-        <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod amet placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at phasellus sed ultricies.</p>
+        <p ng-bind-html="customizerFields.footer_about_me"></p>
         <ul class="actions">
           <li><a href="#" class="button">Learn More</a></li>
         </ul>
@@ -53,7 +53,7 @@
           <!-- <li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li> -->
           <li><a href="mailto:{{customizerFields.header_email_address}}?subject=Enquiry about the blog" class="fa-envelope"><span class="label">Email</span></a></li>
         </ul>
-        <p class="copyright" ng-bind-html="customizerFields.footer_copy_right"><a href="http://designscrazed.org/">HTML5</a>.</p>
+        <p class="copyright" ng-bind-html="customizerFields.footer_copy_right"></p>
       </section>
 
   </section>
