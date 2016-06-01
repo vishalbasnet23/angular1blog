@@ -13,8 +13,8 @@ wp-content/uploads/
 wp-content/uploads--/
 wp-content/wp-cache-config.php
 wp-content/plugins/hello.php
-node_modules
-bower_component
+node_modules/
+bower_components/
 
 /readme.html
 /license.txt
